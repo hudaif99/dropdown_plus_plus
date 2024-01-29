@@ -81,6 +81,8 @@ class DropdownFormField<T> extends StatefulWidget {
   /// Separator between the dropdown items
   final Widget? dropdownItemSeparator;
 
+  final double? dropDownBorderRadius;
+
   DropdownFormField({
     Key? key,
     required this.dropdownItemFn,
@@ -102,6 +104,7 @@ class DropdownFormField<T> extends StatefulWidget {
     this.onEmptyActionPressed,
     this.dropdownItemSeparator,
     this.selectedFn,
+    this.dropDownBorderRadius,
   }) : super(key: key);
 
   @override
@@ -256,6 +259,9 @@ class DropdownFormFieldState<T> extends State<DropdownFormField>
                 height: widget.dropdownHeight ?? null,
                 child: Container(
                     color: widget.dropdownColor ?? Colors.white70,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            widget.dropDownBorderRadius!)),
                     child: ValueListenableBuilder(
                         valueListenable: _listItemsValueNotifier,
                         builder: (context, List<T> items, child) {
@@ -298,14 +304,13 @@ class DropdownFormFieldState<T> extends State<DropdownFormField>
                                     children: [
                                       Text(
                                         widget.emptyText,
-                                        style: TextStyle(color: Colors.black45),
                                       ),
                                       if (widget.onEmptyActionPressed != null)
                                         TextButton(
                                           onPressed: () async {
-                                            await widget
-                                                .onEmptyActionPressed!(_searchTextController
-                                                .value.text);
+                                            await widget.onEmptyActionPressed!(
+                                                _searchTextController
+                                                    .value.text);
                                             _search(_searchTextController
                                                 .value.text);
                                           },
