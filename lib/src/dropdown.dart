@@ -83,29 +83,32 @@ class DropdownFormField<T> extends StatefulWidget {
 
   final double? dropDownBorderRadius;
 
-  DropdownFormField({
-    Key? key,
-    required this.dropdownItemFn,
-    required this.displayItemFn,
-    required this.findFn,
-    this.filterFn,
-    this.autoFocus = false,
-    this.controller,
-    this.validator,
-    this.decoration,
-    this.dropdownColor,
-    this.onChanged,
-    this.onSaved,
-    this.dropdownHeight,
-    this.searchTextStyle,
-    this.cursorColor,
-    this.emptyText = "No matching found!",
-    this.emptyActionText = 'Create new',
-    this.onEmptyActionPressed,
-    this.dropdownItemSeparator,
-    this.selectedFn,
-    this.dropDownBorderRadius,
-  }) : super(key: key);
+  final double? dropdownWidth;
+
+  DropdownFormField(
+      {Key? key,
+      required this.dropdownItemFn,
+      required this.displayItemFn,
+      required this.findFn,
+      this.filterFn,
+      this.autoFocus = false,
+      this.controller,
+      this.validator,
+      this.decoration,
+      this.dropdownColor,
+      this.onChanged,
+      this.onSaved,
+      this.dropdownHeight,
+      this.searchTextStyle,
+      this.cursorColor,
+      this.emptyText = "No matching found!",
+      this.emptyActionText = 'Create new',
+      this.onEmptyActionPressed,
+      this.dropdownItemSeparator,
+      this.selectedFn,
+      this.dropDownBorderRadius,
+      this.dropdownWidth})
+      : super(key: key);
 
   @override
   DropdownFormFieldState createState() => DropdownFormFieldState<T>();
@@ -257,6 +260,7 @@ class DropdownFormFieldState<T> extends State<DropdownFormField>
               elevation: 4.0,
               child: SizedBox(
                 height: widget.dropdownHeight ?? null,
+                width: widget.dropdownWidth ?? null,
                 child: Container(
                     decoration: BoxDecoration(
                         color: widget.dropdownColor ?? Colors.white70,
