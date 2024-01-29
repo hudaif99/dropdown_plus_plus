@@ -258,8 +258,8 @@ class DropdownFormFieldState<T> extends State<DropdownFormField>
               child: SizedBox(
                 height: widget.dropdownHeight ?? null,
                 child: Container(
-                    color: widget.dropdownColor ?? Colors.white70,
                     decoration: BoxDecoration(
+                        color: widget.dropdownColor ?? Colors.white70,
                         borderRadius: BorderRadius.circular(
                             widget.dropDownBorderRadius!)),
                     child: ValueListenableBuilder(
